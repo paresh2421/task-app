@@ -12,7 +12,8 @@ import taskRouter from "./routes/tasksRouter.js";
 import connectDB from "./db/connect.js";
 
 //middleware
-import errorHandlerMiddleware from './middleware/error-handler.js'
+import notFoundMiddleware from "./middleware/not-found.js";
+import errorHandlerMiddleware from "./middleware/error-handler.js";
 
 //configurations
 app.use(express.json());
@@ -20,7 +21,8 @@ app.use(express.json());
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/tasks", taskRouter);
 
-app.use(errorHandlerMiddleware)
+app.use(notFoundMiddleware);
+app.use(errorHandlerMiddleware);
 //variables
 const port = process.env.PORT || 5000;
 
